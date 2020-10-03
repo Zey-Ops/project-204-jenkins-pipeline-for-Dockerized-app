@@ -11,10 +11,10 @@ pipeline{
             echo 'Creating ECR Repository'
             sh """
             aws ecr create-repository \
-              --repository-name ${zey-repo/phonebook-app} 
+              --repository-name ${APP_REPO_NAME} \
               --imaage-scanning-configuration scanOnPush=false \
               --image-tag-mutability MUTABLE \
-              --region ${us-east-1}
+              --region ${AWS_REGION}
             """
             }
         }
