@@ -54,7 +54,9 @@ pipeline{
     post {
         always {
             echo 'Deleting all local images'
+            sh 'docker image prune -af'
         }
+
         failure {
             echo 'Deleting the image repository on ECR due to failure'
             echo 'Deleting the cloudformation stack due to failure'
