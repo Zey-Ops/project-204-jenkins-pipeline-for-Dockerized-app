@@ -173,13 +173,13 @@ Resources:
               -o /usr/local/bin/docker-compose
               chmod +x /usr/local/bin/docker-compose
               docker swarm init
+              yum install git -y
               docker service create \
                 --name=viz \
                 --publish=8080:8080/tcp \
                 --constraint=node.role==manager \
                 --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
                 dockersamples/visualizer
-              yum install git -y
               curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
               unzip awscliv2.zip
               ./aws/install
